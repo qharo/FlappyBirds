@@ -121,7 +121,8 @@ class UI:
     def rect(self, color, pos):
         pygame.draw.rect(self.screen, color, pos)
 
-    def __init__(self, screen, genomes, config):
+    def __init__(self, screen, genomes, config, gener):
+        self.generation = gener
         self.screen = screen
         self.nets = []
         self.ge = []
@@ -175,7 +176,7 @@ class UI:
             self.pipes.append(Pipe(500))
             addPipe = False
             for g in self.ge:
-                g.fitness += 5
+                g.fitness += 10
         
         if removePipe:
             self.pipes.remove(self.rem)
@@ -201,5 +202,9 @@ class UI:
 
         text = self.font.render(f"Score: {self.fscore + self.steps//10}", 1, (255, 255, 255))
         self.screen.blit(text, (380, 10))
+        text = self.font.render(f"Gen: {self.generation}", 1, (255, 255, 255))
+        self.screen.blit(text, (380, 30))
+        text = self.font.render(f"Pop: {len(self.birds)}", 1, (255, 255, 255))
+        self.screen.blit(text, (380, 50))
 
         self.rect(COLORS[2], [500, 0, 300, 600])

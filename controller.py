@@ -14,10 +14,13 @@ gen = []
 gener = 0
 
 def main(genomes, config):
+    global gener
+    global gen
+    global scores
     pygame.init()
     screen = pygame.display.set_mode((800,600))
-    pygame.display.set_caption("Tetris!")
-    ui = UI.UI(screen, genomes, config)
+    pygame.display.set_caption("Flappy Bird Training!")
+    ui = UI.UI(screen, genomes, config, gener)
     env = ENV.ENV(ui)
 
 
@@ -49,7 +52,15 @@ def main(genomes, config):
             output = ui.nets[x].activate((bird.y, topDist, botDist))
 
             if output[0] > 0.5:
-                bird.jump()
+              bird.jump()
+
+            #NEURAL NET
+            # node2 = math.tanh(1.0064226615518481*bird.y-0.22198042549516955)
+            # node1 = math.tanh(botDist*-1.9515456087270615 + 1.5153790044669881*topDist + 0.5712259901747898*node2 + 0.10553905953398524)
+            # value = math.tanh(node1 + node2)
+            # if value > 0.5:
+            #    bird.jump()        
+
 
 
         for event in eventList:
@@ -61,9 +72,7 @@ def main(genomes, config):
             #     if event.key == pygame.K_b and len(ui.birds) == 2:
             #         ui.birds[1].jump()
         
-        global gener
-        global gen
-        global scores
+
         if len(ui.birds) == 0:
             gener += 1
             gen.append(gener)
@@ -81,7 +90,7 @@ def run(conPath):
     pop.add_reporter(neat.StdOutReporter(True))
     pop.add_reporter(neat.StatisticsReporter())
 
-    winner = pop.run(main, 10)
+    winner = pop.run(main, 100)
     print(winner)
     plt.plot(gen, scores)
     plt.show()

@@ -1,0 +1,12 @@
+Nodes:
+        0 DefaultNodeGene(key=0, bias=-1.5124999690945855, response=1.0, activation=tanh, aggregation=sum)
+        1630 DefaultNodeGene(key=1630, bias=-1.5139683158120754, response=1.0, activation=tanh, aggregation=sum)
+        1936 DefaultNodeGene(key=1936, bias=-2.053755308044066, response=1.0, activation=tanh, aggregation=sum)
+        2928 DefaultNodeGene(key=2928, bias=0.825235157745086, response=1.0, activation=tanh, aggregation=sum)
+Connections:
+        DefaultConnectionGene(key=(-3, 0), weight=-9.749626181433037, enabled=True)
+        DefaultConnectionGene(key=(-2, 0), weight=7.421829737099346, enabled=True)
+        DefaultConnectionGene(key=(-1, 1630), weight=-0.32225091056986166, enabled=True)
+        DefaultConnectionGene(key=(0, 1630), weight=-1.2592286357528029, enabled=False)
+        DefaultConnectionGene(key=(0, 1936), weight=0.9461879016848148, enabled=False)
+        DefaultConnectionGene(key=(1936, 2928), weight=1.7817381083953472, enabled=True)
